@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 export default class SingleInput extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ export default class SingleInput extends React.Component {
     };
 
     render() {
-        const { id, type, value, handleInput } = this.props;
+        const { id, type, value, inSection, handleInput } = this.props;
         return (
             <Row>
                 <InputGroup className="mb-3">
@@ -22,7 +22,7 @@ export default class SingleInput extends React.Component {
                         type={type}
                         aria-label={id}
                         onChange={(e) => {
-                            handleInput(e);
+                            handleInput(e.target.value, id, inSection);
                         }}
                     />
                 </InputGroup>

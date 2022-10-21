@@ -13,7 +13,7 @@ export default class Display extends React.Component {
     render() {
         return (
             <Row>
-                <h1>{this.props.value}</h1>
+                <header>{this.props.value}</header>
             </Row>
         )
     }
