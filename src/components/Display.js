@@ -5,23 +5,16 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
-export default function Display(props) {
-    return (
-        <Container>
-            <InputGroup className="mb-3">
-                <InputGroup.Text id="first-name-input">First Name </InputGroup.Text>
-                <Form.Control
-                    placeholder="First Name"
-                    aria-label="First Name"
-                />
-            </InputGroup>
-            <InputGroup className="mb-3">
-                <InputGroup.Text id="last-name-input">Last Name </InputGroup.Text>
-                <Form.Control
-                    placeholder="Last Name"
-                    aria-label="Last Name"
-                />
-            </InputGroup>
-        </ Container>
-    )
+export default class Display extends React.Component {
+    constructor(props) {
+        super(props);
+    };
+
+    render() {
+        return (
+            <Row>
+                <h1>{this.props.value}</h1>
+            </Row>
+        )
+    }
 }
