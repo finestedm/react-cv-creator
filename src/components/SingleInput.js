@@ -14,7 +14,7 @@ export default class SingleInput extends React.Component {
         const { id, type, value, inSection, handleInput } = this.props;
         return (
             <Row>
-                <InputGroup size='sm' className="mb-3">
+                <InputGroup size='sm' className="mb-2">
                     <InputGroup.Text>{id}</InputGroup.Text>
                     <Form.Control
                         // placeholder={value}

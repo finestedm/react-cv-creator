@@ -5,15 +5,19 @@ export default class WorkExperienceSection extends React.Component {
         super(props);
     }
 
-    render() {
-        const { firstJob, firstJobStartDate, firstJobEndDate} = this.props
+    createSingleJobDiv(job) {
         return (
             <>
-                <h3>{firstJob.value}</h3>
-                <h4>{firstJobStartDate.value} - {firstJobEndDate.value}</h4>
-
+                <h3>{job.value}</h3>
+                <h4>{job.startDate} - {job.endDate}</h4>
             </>
         )
     }
 
+    render() {
+        const jobs = { ...this.props }
+        return (
+                Object.keys(jobs).map(job => this.createSingleJobDiv(jobs[job]))
+                )
+    }
 }

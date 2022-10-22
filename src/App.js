@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import PersonalInformationSection from './components/DisplaySections/PersonalInformation'
 import WorkExperienceSection from './components/DisplaySections/WorkExperience';
+import WorkInput from './components/WorkInput';
 
 export default class App extends React.Component {
   constructor() {
@@ -22,9 +23,8 @@ export default class App extends React.Component {
           personalWebsite: { id: 'personalWebsite', type: 'url', value: '', inSection: 'personal' },
         },
         workExperience: {
-          firstJob: { id: 'firstJob', type: 'text', value: '', inSection: 'workExperience' },
-          firstJobStartDate: { id: 'firstJobStartDate', type: 'date', value: '', inSection: 'workExperience' },
-          firstJobEndDate: { id: 'firstJobEndDate', type: 'date', value: '', inSection: 'workExperience' },
+          1: { id: 1, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', startDate: '', endDate: '' },
+          2: { id: 2, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', startDate: '', endDate: '' },
 
         }
 
@@ -34,13 +34,20 @@ export default class App extends React.Component {
     this.handleInput = this.handleInput.bind(this);
   };
 
-  handleInput(newValue, id, inSection) {
-    console.log(newValue, id, inSection)
-    let inputs = { ...this.state.inputs };
-    let inputGroup = inputs[inSection]
-    let item = inputGroup[id]
-    item.value = newValue;
-    this.setState({ inputs });
+  handleInput(newValue, id, inSection, subPart) {
+    if (subPart === undefined) {  // if subPart is empty then we treat it as flat object
+      let inputs = { ...this.state.inputs };
+      let inputGroup = inputs[inSection]
+      let item = inputGroup[id]
+      item.value = newValue;
+      this.setState({ inputs });
+    } else {    // currently different data structure only occurs in workExperience so we have to add localization by subPart
+      let inputs = { ...this.state.inputs };
+      let inputGroup = inputs[inSection]
+      let item = inputGroup[id]
+      item[subPart] = newValue;
+      this.setState({ inputs });
+    }
   }
 
   render() {
@@ -55,12 +62,12 @@ export default class App extends React.Component {
             </Row>
             <Row>
               <h4 className='text-center'>Work experience</h4>
-              {Object.values(inputs.workExperience).map(input => <SingleInput {...input} handleInput={this.handleInput} />)}
+              {Object.values(inputs.workExperience).map(input => <WorkInput {...input} handleInput={this.handleInput} />)}
             </Row>
           </Col>
           <Col className='align-content-center'>
             <Row as={Card} style={{height: '877px', width: '620px', margin: '0 auto', scale: '100vw'}}>
-              <Col><PersonalInformationSection {...inputs.personal} /></Col>
+              <Col className='p-0'><PersonalInformationSection {...inputs.personal} /></Col>
               <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
             </Row>
           </Col>
