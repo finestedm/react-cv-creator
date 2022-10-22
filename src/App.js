@@ -46,25 +46,23 @@ export default class App extends React.Component {
   render() {
     const { inputs } = this.state
     return (
-      <Container>
+      <Container className='mt-5'>
         <Row className='d-flex justify-content-around'>
-          <Col sm={5}>
-            <Col>
+          <Col>
+            <Row>
               <h4 className = 'text-center'>Personal information</h4>
               {Object.values(inputs.personal).map(input => <SingleInput {...input} handleInput={this.handleInput} />)}
-            </Col>
-            <Col>
+            </Row>
+            <Row>
               <h4 className='text-center'>Work experience</h4>
               {Object.values(inputs.workExperience).map(input => <SingleInput {...input} handleInput={this.handleInput} />)}
-            </Col>
+            </Row>
           </Col>
-          <Col className='justify-content-center'>
-            <Card style={{height: '877px', width: '620px'}}>
-              <Row>
-                <Col><PersonalInformationSection {...inputs.personal} /></Col>
-                <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
-              </Row>
-            </Card>
+          <Col className='align-content-center'>
+            <Row as={Card} style={{height: '877px', width: '620px', margin: '0 auto', scale: '100vw'}}>
+              <Col><PersonalInformationSection {...inputs.personal} /></Col>
+              <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
+            </Row>
           </Col>
         </Row>
       </Container>
