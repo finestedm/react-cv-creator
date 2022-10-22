@@ -58,12 +58,14 @@ export default class App extends React.Component {
               {Object.values(inputs.workExperience).map(input => <SingleInput {...input} handleInput={this.handleInput} />)}
             </Col>
           </Col>
-          <Card style={{ height: '842px', width: '595px'}} >
-            <Row>
-              <Col><PersonalInformationSection {...inputs.personal} /></Col>
-              <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
-            </Row>
-          </Card>
+          <Col className='justify-content-center'>
+            <Card style={{height: '877px', width: '620px'}}>
+              <Row>
+                <Col><PersonalInformationSection {...inputs.personal} /></Col>
+                <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
+              </Row>
+            </Card>
+          </Col>
         </Row>
       </Container>
       

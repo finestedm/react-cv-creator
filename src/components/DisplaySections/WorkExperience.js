@@ -9,8 +9,8 @@ export default class WorkExperienceSection extends React.Component {
         const { firstJob, firstJobStartDate, firstJobEndDate} = this.props
         return (
             <>
-                <h1>{firstJob.value}</h1>
-                <h2>{firstJobStartDate.value} - {firstJobEndDate.value}</h2>
+                <h3>{firstJob.value}</h3>
+                <h4>{firstJobStartDate.value} - {firstJobEndDate.value}</h4>
 
             </>
         )
