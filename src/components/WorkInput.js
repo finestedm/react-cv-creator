@@ -13,8 +13,9 @@ export default class WorkInput extends React.Component {
     render() {
         const { id, startDate, endDate, inSection, type, handleInput } = this.props;
         return (
-            <Row className="mb-3">
-                <InputGroup as={Col} size='sm' className="mb-0">
+            <div className = 'mb-4'>
+            <Row>
+                <InputGroup as={Col} size='sm' className="mb-2">
                     <InputGroup.Text>Company name</InputGroup.Text>
                     <Form.Control
                         id={id}
@@ -25,8 +26,8 @@ export default class WorkInput extends React.Component {
                         }}
                     />
                 </InputGroup>
-                <InputGroup as={Col} size='sm'>
-                    <InputGroup.Text>Working time period</InputGroup.Text>
+                <InputGroup as={Col} size='sm' className="mb-2">
+                    <InputGroup.Text>Time period</InputGroup.Text>
                     <Form.Control
                         id={startDate}
                         type='date'
@@ -45,6 +46,21 @@ export default class WorkInput extends React.Component {
                     />
                 </InputGroup>
             </Row>
+            <Row>
+                    <InputGroup as={Col} size='sm' className="mb-0">
+                    <InputGroup.Text>Job description</InputGroup.Text>
+                        <Form.Control
+                        as="textarea"
+                        id={id}
+                        type={type}
+                        aria-label={id}
+                        onChange={(e) => {
+                            handleInput(e.target.value, id, inSection, 'description');
+                        }}
+                    />
+                </InputGroup>
+                </Row>
+                </div>
         )
     }
 

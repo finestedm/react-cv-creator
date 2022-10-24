@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 import PersonalInformationSection from './components/DisplaySections/PersonalInformation'
 import WorkExperienceSection from './components/DisplaySections/WorkExperience';
 import WorkInput from './components/WorkInput';
+import ImageInput from './components/ImageInput';
 
 export default class App extends React.Component {
   constructor() {
@@ -19,20 +20,28 @@ export default class App extends React.Component {
           firstName: { id: 'firstName', type: 'text', value: '', inSection: 'personal' },
           lastName: { id: 'lastName', type: 'text', value: '', inSection: 'personal' },
           birthDate: { id: 'birthDate', type: 'date', value: '', inSection: 'personal' },
+          phone: { id: 'phone', type: 'tel', value: '', inSection: 'personal' },
           email: { id: 'email', type: 'email', value: '', inSection: 'personal' },
           personalWebsite: { id: 'personalWebsite', type: 'url', value: '', inSection: 'personal' },
+          aboutSelf: { id: 'aboutSelf', type: 'textarea', value: '', inSection: 'personal' },
+
         },
         workExperience: {
-          1: { id: 1, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', startDate: '', endDate: '' },
-          2: { id: 2, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', startDate: '', endDate: '' },
-
-        }
-
+          1: { id: 1, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
+          2: { id: 2, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
+        },
+        file: null
   }
     };
-
+    this.handlePhotoUpload = this.handlePhotoUpload.bind(this)
     this.handleInput = this.handleInput.bind(this);
   };
+
+  handlePhotoUpload(event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    })
+  }
 
   handleInput(newValue, id, inSection, subPart) {
     if (subPart === undefined) {  // if subPart is empty then we treat it as flat object
@@ -54,11 +63,12 @@ export default class App extends React.Component {
     const { inputs } = this.state
     return (
       <Container className='mt-5'>
-        <Row className='d-flex justify-content-around'>
+        <main as={Row} className='d-flex justify-content-around'>
           <Col>
             <Row>
               <h4 className = 'text-center'>Personal information</h4>
               {Object.values(inputs.personal).map(input => <SingleInput {...input} handleInput={this.handleInput} />)}
+              <ImageInput handlePhotoUpload={this.handlePhotoUpload} />
             </Row>
             <Row>
               <h4 className='text-center'>Work experience</h4>
@@ -68,10 +78,11 @@ export default class App extends React.Component {
           <Col className='align-content-center'>
             <Row as={Card} style={{height: '877px', width: '620px', margin: '0 auto', scale: '100vw'}}>
               <Col className='p-0'><PersonalInformationSection {...inputs.personal} /></Col>
+              <img src={this.state.file}/>
               <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
             </Row>
           </Col>
-        </Row>
+        </main>
       </Container>
       
     )
