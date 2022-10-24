@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
+
 
 export default class WorkInput extends React.Component {
     constructor(props) {
@@ -13,8 +13,8 @@ export default class WorkInput extends React.Component {
     render() {
         const { id, startDate, endDate, inSection, type, handleInput } = this.props;
         return (
-            <>
-            <Row>
+            <div className='p-0 m-0'>
+            <Row >
                 <InputGroup as={Col} size='sm' className="mb-2">
                     <InputGroup.Text>Company name</InputGroup.Text>
                     <Form.Control
@@ -59,8 +59,8 @@ export default class WorkInput extends React.Component {
                         }}
                     />
                 </InputGroup>
-            </Row>
-            </>
+                </Row>
+            </div>
         )
     }
 

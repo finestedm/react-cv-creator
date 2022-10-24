@@ -9,6 +9,8 @@ import PersonalInformationSection from './components/DisplaySections/PersonalInf
 import WorkExperienceSection from './components/DisplaySections/WorkExperience';
 import WorkInput from './components/WorkInput';
 import ImageInput from './components/ImageInput';
+import Button from 'react-bootstrap/Button';
+
 
 export default class App extends React.Component {
   constructor() {
@@ -72,6 +74,7 @@ export default class App extends React.Component {
             <Row>
               <h4 className='text-center'>Work experience</h4>
               {Object.values(inputs.workExperience).map(input => <WorkInput {...input} handleInput={this.handleInput} />)}
+              <Button variant='outline-secondary'>Add another job</Button>
             </Row>
           </Col>
           <Col>

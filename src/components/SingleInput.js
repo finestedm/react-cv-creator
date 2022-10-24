@@ -13,20 +13,20 @@ export default class SingleInput extends React.Component {
     render() {
         const { id, type, value, inSection, handleInput } = this.props;
         return (
-            <Row>
-                <InputGroup size='sm' className="mb-2">
-                    <InputGroup.Text>{id}</InputGroup.Text>
-                    <Form.Control
-                        // placeholder={value}
-                        id={id}
-                        type={type}
-                        aria-label={id}
-                        onChange={(e) => {
-                            handleInput(e.target.value, id, inSection);
-                        }}
-                    />
-                </InputGroup>
-            </Row>
+                <Col xs={12} className='m-0 p-0 '>
+                    <InputGroup size='sm' className="mb-2">
+                        <InputGroup.Text>{id}</InputGroup.Text>
+                        <Form.Control
+                            // placeholder={value}
+                            id={id}
+                            type={type}
+                            aria-label={id}
+                            onChange={(e) => {
+                                handleInput(e.target.value, id, inSection);
+                            }}
+                        />
+                    </InputGroup>
+                </Col>
         )
     }
 

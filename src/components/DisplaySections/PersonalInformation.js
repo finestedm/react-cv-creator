@@ -10,7 +10,7 @@ export default class PersonalInformationSection extends React.Component {
     render() {
         const { firstName, lastName, phone, email, personalWebsite, aboutSelf, photo } = this.props
         return (
-            <div>
+            <div >
                 <Row >
                     <Col className='Heading p-2'>
                         <h2>{firstName.value} {lastName.value}</h2>

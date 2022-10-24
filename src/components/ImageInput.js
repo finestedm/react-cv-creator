@@ -11,7 +11,7 @@ export default class ImageInput extends React.Component {
 
     render() {
         return (
-            <Row>
+            <Col xs={12} className='m-0 p-0'>
                 <InputGroup size='sm' className="mb-2">
                     <InputGroup.Text>Your Photo</InputGroup.Text>
                     <Form.Control
@@ -21,7 +21,7 @@ export default class ImageInput extends React.Component {
                         onChange={(e) => this.props.handlePhotoUpload(e)}
                     />
                 </InputGroup>
-            </Row>
+            </Col>
         )
     }
 
