@@ -1,6 +1,6 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { Col, Row } from "react-bootstrap";
+import ReactDOM from "react-dom";
 
 export default class WorkExperienceSection extends React.Component {
     constructor(props) {
@@ -9,15 +9,17 @@ export default class WorkExperienceSection extends React.Component {
 
     createSingleJobDiv(job) {
         return (
-            <Row className='d-flex flex-row justify-content-start'>
-                <Col>
-                    <h5>{job.value}</h5>
-                    <h6> {job.startDate} - {job.endDate}</h6>
-                </Col>
-                <Col xs={8}>
-                    <p className='col '> {job.description}</p>
-                </Col>
-            </Row>
+            <li>
+                <Row>
+                    <Col xs={4}>
+                        <h5 className='mb-0'>{job.value}</h5>
+                        <h6><small>{job.startDate} - {job.endDate}</small></h6>
+                    </Col>
+                    <Col>
+                        <p className='col'> {job.description}</p>
+                    </Col>
+                </Row>
+            </li>
         )
     }
 
@@ -25,8 +27,11 @@ export default class WorkExperienceSection extends React.Component {
         const jobs = { ...this.props }
         return (
             <>
-                <h4><u><i>Work experience</i></u></h4>
-                {Object.keys(jobs).map(job => this.createSingleJobDiv(jobs[job]))}
-            </>    )
+                <h6><u><i>{Object.keys(jobs).every(job => jobs[1].value !== '') && 'Work experience'}</i></u></h6>    {/*add 'Work Experience heading only if first employer name has been added' */}
+                <ol>
+                    {Object.keys(jobs).map(job => jobs[job].value !== '' && this.createSingleJobDiv(jobs[job]))}
+                </ol>
+            </>
+        )
     }
 }

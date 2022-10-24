@@ -13,7 +13,7 @@ export default class WorkInput extends React.Component {
     render() {
         const { id, startDate, endDate, inSection, type, handleInput } = this.props;
         return (
-            <div className = 'mb-4'>
+            <>
             <Row>
                 <InputGroup as={Col} size='sm' className="mb-2">
                     <InputGroup.Text>Company name</InputGroup.Text>
@@ -47,7 +47,7 @@ export default class WorkInput extends React.Component {
                 </InputGroup>
             </Row>
             <Row>
-                    <InputGroup as={Col} size='sm' className="mb-0">
+                    <InputGroup as={Col} size='sm' className="mb-4">
                     <InputGroup.Text>Job description</InputGroup.Text>
                         <Form.Control
                         as="textarea"
@@ -59,8 +59,8 @@ export default class WorkInput extends React.Component {
                         }}
                     />
                 </InputGroup>
-                </Row>
-                </div>
+            </Row>
+            </>
         )
     }
 

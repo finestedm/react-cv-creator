@@ -19,7 +19,6 @@ export default class App extends React.Component {
         personal: {
           firstName: { id: 'firstName', type: 'text', value: '', inSection: 'personal' },
           lastName: { id: 'lastName', type: 'text', value: '', inSection: 'personal' },
-          birthDate: { id: 'birthDate', type: 'date', value: '', inSection: 'personal' },
           phone: { id: 'phone', type: 'tel', value: '', inSection: 'personal' },
           email: { id: 'email', type: 'email', value: '', inSection: 'personal' },
           personalWebsite: { id: 'personalWebsite', type: 'url', value: '', inSection: 'personal' },
@@ -30,7 +29,7 @@ export default class App extends React.Component {
           1: { id: 1, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
           2: { id: 2, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
         },
-        file: null
+        photo: null
   }
     };
     this.handlePhotoUpload = this.handlePhotoUpload.bind(this)
@@ -39,7 +38,7 @@ export default class App extends React.Component {
 
   handlePhotoUpload(event) {
     this.setState({
-      file: URL.createObjectURL(event.target.files[0])
+      photo: URL.createObjectURL(event.target.files[0])
     })
   }
 
@@ -60,10 +59,10 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { inputs } = this.state
+    const { inputs, photo } = this.state
     return (
-      <Container className='mt-5'>
-        <main as={Row} className='d-flex justify-content-around'>
+      <Container fluid="md" className='mt-5'>
+        <Row className='main d-flex justify-content-around'>
           <Col>
             <Row>
               <h4 className = 'text-center'>Personal information</h4>
@@ -75,14 +74,13 @@ export default class App extends React.Component {
               {Object.values(inputs.workExperience).map(input => <WorkInput {...input} handleInput={this.handleInput} />)}
             </Row>
           </Col>
-          <Col className='align-content-center'>
-            <Row as={Card} style={{height: '877px', width: '620px', margin: '0 auto', scale: '100vw'}}>
-              <Col className='p-0'><PersonalInformationSection {...inputs.personal} /></Col>
-              <img src={this.state.file}/>
+          <Col>
+            <Row as={Card} style={{height: '877px', width: '620px', margin: '0 auto'}}>
+              <Col><PersonalInformationSection {...inputs.personal} photo={photo} /></Col>
               <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
             </Row>
           </Col>
-        </main>
+        </Row>
       </Container>
       
     )
