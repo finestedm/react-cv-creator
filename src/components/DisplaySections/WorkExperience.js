@@ -27,7 +27,7 @@ export default class WorkExperienceSection extends React.Component {
         const jobs = { ...this.props }
         return (
             <>
-                <h6><u><i>{Object.keys(jobs).every(job => jobs[1].value !== '') && 'Work experience'}</i></u></h6>    {/*add 'Work Experience heading only if first employer name has been added' */}
+                <h6><i>{Object.keys(jobs).every(job => jobs[1].value !== '') && 'Work experience'}<hr className='mt-0'></hr></i></h6>    {/*add 'Work Experience heading only if first employer name has been added' */}
                 <ol>
                     {Object.keys(jobs).map(job => jobs[job].value !== '' && this.createSingleJobDiv(jobs[job]))}
                 </ol>

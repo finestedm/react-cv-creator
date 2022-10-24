@@ -24,7 +24,7 @@ export default class PersonalInformationSection extends React.Component {
                 </Row>
                 <Row>
                     <Col className='about-self p-2'>
-                        <h6><u><i>{aboutSelf.value !== '' && 'About Self'}</i></u></h6>
+                        <h6><i>{aboutSelf.value !== '' && 'About Self'} <hr className='mt-0'></hr> </i></h6>
                         <p>{aboutSelf.value}</p>               
                     </Col>
                 </Row>
