@@ -28,13 +28,13 @@ export default class App extends React.Component {
         ],
         workExperience: [
           { id: 1, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
-          { id: 2, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
         ],
         photo: null
   }
     };
     this.handlePhotoUpload = this.handlePhotoUpload.bind(this)
-    this.handleNewJob = this.handleNewJob.bind(this);
+    this.addNewJob = this.addNewJob.bind(this);
+    this.deleteJob = this.deleteJob.bind(this);
     this.handleInput = this.handleInput.bind(this);
   };
 
@@ -44,19 +44,22 @@ export default class App extends React.Component {
     })
   }
 
-  handleNewJob() {
+  addNewJob() {
     let inputs = { ...this.state.inputs };
     let workExperienceObjects = inputs['workExperience'];
     let numberOfJObs = Object.keys(workExperienceObjects).length
     let newJobNumber = numberOfJObs + 1
     let newJob = { id: newJobNumber, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''}
-    console.log(newJob)
     workExperienceObjects.push(newJob) 
-    console.log(workExperienceObjects)
-      // let inputGroup = inputs[inSection]
-      // let item = inputGroup[id]
-      // item[subPart] = newValue;
-      this.setState({ inputs });
+    this.setState({ inputs });
+  }
+
+  deleteJob(searchedId) {
+    let inputs = { ...this.state.inputs };
+    let workExperienceObjects = inputs['workExperience'];
+    let workExperienceObjectsWithDeletedJob = workExperienceObjects.filter(job => (job.id !== searchedId))
+    inputs['workExperience'] = workExperienceObjectsWithDeletedJob
+    this.setState({ inputs });
   }
 
   handleInput(newValue, searchedId, inSection, subPart) {
@@ -81,15 +84,15 @@ export default class App extends React.Component {
       <Container fluid="md" className='mt-5'>
         <Row className='main d-flex justify-content-around'>
           <Col>
-            <Row>
+            <Row className='mb-3'>
               <h4 className = 'text-center'>Personal information</h4>
               {Object.values(inputs.personal).map(input => <SingleInput {...input} handleInput={this.handleInput} />)}
               <ImageInput handlePhotoUpload={this.handlePhotoUpload} />
             </Row>
             <Row>
               <h4 className='text-center'>Work experience</h4>
-              {Object.values(inputs.workExperience).map(input => <WorkInput {...input} handleInput={this.handleInput} />)}
-              <Button variant='outline-secondary' onClick={this.handleNewJob}>Add another job</Button>
+              {Object.values(inputs.workExperience).map(input => <WorkInput {...input} handleInput={this.handleInput} deleteJob={this.deleteJob} />)}
+              <Button variant='outline-secondary' onClick={this.addNewJob}>Add another job</Button>
             </Row>
           </Col>
           <Col>
