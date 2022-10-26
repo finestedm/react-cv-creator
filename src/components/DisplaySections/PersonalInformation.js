@@ -8,15 +8,15 @@ export default class PersonalInformationSection extends React.Component {
     }
 
     render() {
-        const { firstName, lastName, phone, email, personalWebsite, aboutSelf, photo } = this.props
+        const {photo} = this.props
         return (
-            <div >
+            <div>
                 <Row >
                     <Col className='Heading p-2'>
-                        <h2>{firstName.value} {lastName.value}</h2>
-                        <h6><small>{phone.value !== '' && 'Contact number:  '} </small> {phone.value}</h6>
-                        <h6><small>{email.value !== '' && 'E-mail address:  '} </small>  {email.value}</h6>
-                        <h6><small>{personalWebsite.value !== '' && 'My website:  '} </small><u>{personalWebsite.value}</u></h6>
+                        <h2>{this.props[0].value} {this.props[1].value}</h2>
+                        <h6><small>{this.props[2].value !== '' && 'Contact number:  '} </small> {this.props[2].value}</h6>
+                        <h6><small>{this.props[3].value !== '' && 'E-mail address:  '} </small>  {this.props[3].value}</h6>
+                        <h6><small>{this.props[4].value !== '' && 'My website:  '} </small><u>{this.props[4].value}</u></h6>
                     </Col>
                     <Col xs={4} className='Heading p-2'>
                         {photo !== undefined && <img className='person-photo float-end' src={photo}></img>}   {/*generate this element only if photo is uploaded (defined))*/}
@@ -24,8 +24,8 @@ export default class PersonalInformationSection extends React.Component {
                 </Row>
                 <Row>
                     <Col className='about-self p-2'>
-                        <h6><i>{aboutSelf.value !== '' && 'About Self'} <hr className='mt-0'></hr> </i></h6>
-                        <p>{aboutSelf.value}</p>               
+                        <h6><i>{this.props[5].value !== '' && 'About Self'} <hr className='mt-0'></hr> </i></h6>
+                        <p>{this.props[5].value}</p>               
                     </Col>
                 </Row>
             </div>

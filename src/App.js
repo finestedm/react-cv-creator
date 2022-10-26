@@ -18,23 +18,23 @@ export default class App extends React.Component {
 
     this.state = {
       inputs: {
-        personal: {
-          firstName: { id: 'firstName', type: 'text', value: '', inSection: 'personal' },
-          lastName: { id: 'lastName', type: 'text', value: '', inSection: 'personal' },
-          phone: { id: 'phone', type: 'tel', value: '', inSection: 'personal' },
-          email: { id: 'email', type: 'email', value: '', inSection: 'personal' },
-          personalWebsite: { id: 'personalWebsite', type: 'url', value: '', inSection: 'personal' },
-          aboutSelf: { id: 'aboutSelf', type: 'textarea', value: '', inSection: 'personal' },
-
-        },
-        workExperience: {
-          1: { id: 1, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
-          2: { id: 2, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
-        },
+        personal: [
+          { id: 'firstName', description: 'First name', type: 'text', value: '', inSection: 'personal' },
+          { id: 'lastName',  description: 'Last name', type: 'text', value: '', inSection: 'personal' },
+          { id: 'phone',  description: 'Telephone number', type: 'tel', value: '', inSection: 'personal' },
+          { id: 'email',  description: 'E-mail address', type: 'email', value: '', inSection: 'personal' },
+          { id: 'personalWebsite',  description: 'Your website URL', type: 'url', value: '', inSection: 'personal' },
+          { id: 'aboutSelf', description: 'Write something about yourself', type: 'textarea', value: '', inSection: 'personal' },
+        ],
+        workExperience: [
+          { id: 1, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
+          { id: 2, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''},
+        ],
         photo: null
   }
     };
     this.handlePhotoUpload = this.handlePhotoUpload.bind(this)
+    this.handleNewJob = this.handleNewJob.bind(this);
     this.handleInput = this.handleInput.bind(this);
   };
 
@@ -44,17 +44,32 @@ export default class App extends React.Component {
     })
   }
 
-  handleInput(newValue, id, inSection, subPart) {
+  handleNewJob() {
+    let inputs = { ...this.state.inputs };
+    let workExperienceObjects = inputs['workExperience'];
+    let numberOfJObs = Object.keys(workExperienceObjects).length
+    let newJobNumber = numberOfJObs + 1
+    let newJob = { id: newJobNumber, type: 'text', value: '', inSection: 'workExperience', startDate: '', endDate: '', description: ''}
+    console.log(newJob)
+    workExperienceObjects.push(newJob) 
+    console.log(workExperienceObjects)
+      // let inputGroup = inputs[inSection]
+      // let item = inputGroup[id]
+      // item[subPart] = newValue;
+      this.setState({ inputs });
+  }
+
+  handleInput(newValue, searchedId, inSection, subPart) {
     if (subPart === undefined) {  // if subPart is empty then we treat it as flat object
       let inputs = { ...this.state.inputs };
       let inputGroup = inputs[inSection]
-      let item = inputGroup[id]
+      let item = inputGroup.filter(input => (input.id === searchedId))[0]
       item.value = newValue;
       this.setState({ inputs });
     } else {    // currently different data structure only occurs in workExperience so we have to add localization by subPart
       let inputs = { ...this.state.inputs };
       let inputGroup = inputs[inSection]
-      let item = inputGroup[id]
+      let item = inputGroup.filter(input => (input.id === searchedId))[0]
       item[subPart] = newValue;
       this.setState({ inputs });
     }
@@ -74,7 +89,7 @@ export default class App extends React.Component {
             <Row>
               <h4 className='text-center'>Work experience</h4>
               {Object.values(inputs.workExperience).map(input => <WorkInput {...input} handleInput={this.handleInput} />)}
-              <Button variant='outline-secondary'>Add another job</Button>
+              <Button variant='outline-secondary' onClick={this.handleNewJob}>Add another job</Button>
             </Row>
           </Col>
           <Col>
