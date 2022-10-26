@@ -81,6 +81,10 @@ export default class App extends React.Component {
   render() {
     const { inputs, photo } = this.state
     return (
+      <>
+      <nav class="navbar navbar-light bg-light sticky-top">
+        <span class="navbar-brand mb-0 p-3 h1">CV Creator</span>
+      </nav>
       <Container fluid="md" className='mt-5'>
         <Row className='main d-flex justify-content-around'>
           <Col>
@@ -103,7 +107,7 @@ export default class App extends React.Component {
           </Col>
         </Row>
       </Container>
-      
+      </>
     )
   }
 }

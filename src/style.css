@@ -1,3 +1,7 @@
+:root {
+    --primary-color: #6E6362;   
+}
+
 .Heading {
     background-color: lightgray;
 }
@@ -17,5 +21,13 @@ small {
 }
 
 ol>li::marker {
-    color: darkgray ;
+    color: var(--primary-color) ;
+}
+
+.Heading>h2 {
+    font-weight: 900 !important;
+}
+
+.colored {
+    color: var(--primary-color)
 }
