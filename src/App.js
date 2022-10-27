@@ -41,12 +41,28 @@ export default class App extends React.Component {
     this.addNewEntry = this.addNewEntry.bind(this);
     this.deleteEntry = this.deleteEntry.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.saveLocalStorage = this.saveLocalStorage.bind(this);
   };
 
+  componentDidMount() {
+    const data = JSON.parse(window.localStorage.getItem('data'))
+    if (this.state.inputs !== data) {
+      console.log('pieees')
+      this.setState({inputs: JSON.parse(window.localStorage.getItem('data'))})
+    } else {
+      console.log('its the same')
+    }
+  }
+
+  saveLocalStorage() {  
+    localStorage.setItem('data', JSON.stringify(this.state.inputs))
+  }
+  
   handlePhotoUpload(event) {
     this.setState({
       photo: URL.createObjectURL(event.target.files[0])
     })
+    this.saveLocalStorage();
   }
 
   addNewEntry(inSection) {
@@ -57,6 +73,7 @@ export default class App extends React.Component {
     let newEntry = { id: numberOfNewEntry, type: 'text', value: '', inSection: inSection, startDate: '', endDate: '', description: ''}
     searchedSectionObjects.push(newEntry) 
     this.setState({ inputs });
+    this.saveLocalStorage();
   }
 
   deleteEntry(searchedId, inSection) {
@@ -65,6 +82,7 @@ export default class App extends React.Component {
     let searchedSectionObjectsWithDeletedJob = searchedSectionObjects.filter(entry => (entry.id !== searchedId))
     inputs[inSection] = searchedSectionObjectsWithDeletedJob
     this.setState({ inputs });
+    this.saveLocalStorage();
   }
 
   handleInput(newValue, searchedId, inSection, subPart) {
@@ -74,12 +92,14 @@ export default class App extends React.Component {
       let item = inputGroup.filter(input => (input.id === searchedId))[0]
       item.value = newValue;
       this.setState({ inputs });
+      this.saveLocalStorage();
     } else {    // currently different data structure only occurs in workExperience so we have to add localization by subPart
       let inputs = { ...this.state.inputs };
       let inputGroup = inputs[inSection]
       let item = inputGroup.filter(input => (input.id === searchedId))[0]
       item[subPart] = newValue;
       this.setState({ inputs });
+      this.saveLocalStorage();
     }
   }
 
@@ -98,7 +118,7 @@ export default class App extends React.Component {
           </a>
       </nav>
       <Container fluid="md" className='mt-5'>
-        <Row className='main d-flex justify-content-around'>
+        <Row className='main d-flex justify-content-around gap-5'>
           <Col>
             <Row className='mb-4'>
               <h4 className='p-0'>Personal information</h4>
