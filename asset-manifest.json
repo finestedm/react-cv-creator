@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-cv-creator/static/css/main.cf6854f8.css",
+    "main.js": "/react-cv-creator/static/js/main.77326f2b.js",
+    "index.html": "/react-cv-creator/index.html",
+    "main.cf6854f8.css.map": "/react-cv-creator/static/css/main.cf6854f8.css.map",
+    "main.77326f2b.js.map": "/react-cv-creator/static/js/main.77326f2b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf6854f8.css",
+    "static/js/main.77326f2b.js"
+  ]
+}
