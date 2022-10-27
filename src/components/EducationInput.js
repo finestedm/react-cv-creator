@@ -6,23 +6,23 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 
-export default class WorkInput extends React.Component {
+export default class EducationInput extends React.Component {
     constructor(props) {
         super(props);
     };
 
     render() {
-        const { id, startDate, endDate, inSection, type, handleInput, deleteEntry} = this.props;
+        const { id, endDate, inSection, type, handleInput, deleteEntry} = this.props;
         return (
-            <div className='p-0 m-0 border border-secondary rounded mb-2'>
+            <div className='p-0 m-0 border rounded border-secondary mb-2'>
                 <Row className='p-1 text-center'>
                     <Col>
-                        <h6  className='mb-0'>Job # {id}</h6>
+                        <h6  className='mb-0'>School # {id}</h6>
                     </Col>
                 </Row>
                 <Row className='p-2'>
                     <InputGroup as={Col} size='sm' >
-                        <InputGroup.Text>Company name</InputGroup.Text>
+                        <InputGroup.Text>School name</InputGroup.Text>
                         <Form.Control
                             id={id}
                             type={type}
@@ -33,16 +33,8 @@ export default class WorkInput extends React.Component {
                         />
                     </InputGroup>
                     <InputGroup as={Col} size='sm' >
-                        <InputGroup.Text>Time period</InputGroup.Text>
+                        <InputGroup.Text>Graduation date</InputGroup.Text>
                         <Form.Control
-                            id={startDate}
-                            type='date'
-                            aria-label={startDate}
-                            onChange={(e) => {
-                                handleInput(e.target.value, id, inSection, 'startDate');
-                            }}
-                        />
-    <                   Form.Control
                             id={endDate}
                             type='date'
                             aria-label={endDate}
@@ -54,13 +46,23 @@ export default class WorkInput extends React.Component {
                 </Row>
                 <Row className="p-2">
                         <InputGroup as={Col} size='sm'>
-                        <InputGroup.Text>Job description</InputGroup.Text>
+                        <InputGroup.Text>Profile</InputGroup.Text>
                             <Form.Control
-                            as="textarea"
                             id={id}
                             type={type}
                             aria-label={id}
-                            onChange={(e) => handleInput(e.target.value, id, inSection, 'description')}
+                            onChange={(e) => handleInput(e.target.value, id, inSection, 'profile')}
+                        />
+                    </InputGroup>
+                </Row>
+                <Row className="p-2">
+                        <InputGroup as={Col} size='sm'>
+                        <InputGroup.Text>Achievements</InputGroup.Text>
+                            <Form.Control
+                            id={id}
+                            type={type}
+                            aria-label={id}
+                            onChange={(e) => handleInput(e.target.value, id, inSection, 'achievements')}
                         />
                     </InputGroup>
                 </Row>
@@ -70,7 +72,7 @@ export default class WorkInput extends React.Component {
                             onClick={() => deleteEntry(id, inSection)}
                             className='btn-sm'
                             variant='outline-danger'>
-                            Delete this job
+                            Delete this education entry
                         </Button>
                     </Col>
                 </Row>
