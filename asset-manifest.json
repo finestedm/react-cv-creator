@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-cv-creator/static/css/main.19a5e1e2.css",
-    "main.js": "/react-cv-creator/static/js/main.ef99dc5c.js",
+    "main.js": "/react-cv-creator/static/js/main.194b022c.js",
     "index.html": "/react-cv-creator/index.html",
     "main.19a5e1e2.css.map": "/react-cv-creator/static/css/main.19a5e1e2.css.map",
-    "main.ef99dc5c.js.map": "/react-cv-creator/static/js/main.ef99dc5c.js.map"
+    "main.194b022c.js.map": "/react-cv-creator/static/js/main.194b022c.js.map"
   },
   "entrypoints": [
     "static/css/main.19a5e1e2.css",
-    "static/js/main.ef99dc5c.js"
+    "static/js/main.194b022c.js"
   ]
 }
