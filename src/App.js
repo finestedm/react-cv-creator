@@ -46,7 +46,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     const data = JSON.parse(window.localStorage.getItem('data'))
-    if (this.state.inputs !== data) {
+    if (this.state.inputs !== data && data !== null) {
       this.setState({inputs: JSON.parse(window.localStorage.getItem('data'))})
     } else {
     }
