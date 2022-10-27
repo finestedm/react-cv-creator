@@ -47,10 +47,8 @@ export default class App extends React.Component {
   componentDidMount() {
     const data = JSON.parse(window.localStorage.getItem('data'))
     if (this.state.inputs !== data) {
-      console.log('pieees')
       this.setState({inputs: JSON.parse(window.localStorage.getItem('data'))})
     } else {
-      console.log('its the same')
     }
   }
 
