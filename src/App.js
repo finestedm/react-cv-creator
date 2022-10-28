@@ -1,17 +1,18 @@
 import React from 'react';
-import SingleInput from './components/SingleInput'
-import Display from './components/Display';
+import SingleInput from './components/InputSections/SingleInput'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import PersonalInformationSection from './components/DisplaySections/PersonalInformation'
 import WorkExperienceSection from './components/DisplaySections/WorkExperience';
-import WorkInput from './components/WorkInput';
-import ImageInput from './components/ImageInput';
+import WorkInput from './components/InputSections/WorkInput';
+import ImageInput from './components/InputSections/ImageInput';
 import Button from 'react-bootstrap/Button';
-import EducationInput from './components/EducationInput';
+import EducationInput from './components/InputSections/EducationInput';
 import Education from './components/DisplaySections/Education';
+import SkillInput from './components/InputSections/SkillInput';
+import Skills from './components/DisplaySections/Skills';
 
 
 export default class App extends React.Component {
@@ -34,7 +35,10 @@ export default class App extends React.Component {
         education: [
           { id: 1, type: 'text', value: '', inSection: 'education', endDate: '', profile: '', achievements: ''},
         ],
-        photo: null
+        photo: null,
+        skills: [
+          { id: 1, value: '', inSection: 'skills', level: ''},
+        ]
   }
     };
     this.handlePhotoUpload = this.handlePhotoUpload.bind(this)
@@ -68,7 +72,7 @@ export default class App extends React.Component {
     let searchedSectionObjects = inputs[inSection];
     let numberOfEntries = Object.keys(searchedSectionObjects).length
     let numberOfNewEntry = numberOfEntries + 1
-    let newEntry = { id: numberOfNewEntry, type: 'text', value: '', inSection: inSection, startDate: '', endDate: '', description: ''}
+    let newEntry = { id: numberOfNewEntry, inSection: inSection}
     searchedSectionObjects.push(newEntry) 
     this.setState({ inputs });
     this.saveLocalStorage();
@@ -126,19 +130,25 @@ export default class App extends React.Component {
             <Row className='mb-4'>
               <h4 className='p-0'>Education</h4>
               {Object.values(inputs.education).map(input => <EducationInput {...input} handleInput={this.handleInput} deleteEntry={this.deleteEntry} />)}
-              <Button variant='outline-secondary' onClick={() => this.addNewEntry('education')}>+ Add another education entry</Button>
+              <Button variant='outline-secondary' className='btn-sm' onClick={() => this.addNewEntry('education')}>+ Add another education entry</Button>
             </Row>
             <Row className='mb-4'>
               <h4 className='p-0'>Work experience</h4>
               {Object.values(inputs.workExperience).map(input => <WorkInput {...input} handleInput={this.handleInput} deleteEntry={this.deleteEntry} />)}
-              <Button variant='outline-secondary' onClick={() => this.addNewEntry('workExperience')}>+ Add another job</Button>
+              <Button variant='outline-secondary' className='btn-sm' onClick={() => this.addNewEntry('workExperience')}>+ Add another job</Button>
             </Row>
+            <Row className='mb-4'>
+              <h4 className='p-0'>Skills</h4>
+              {Object.values(inputs.skills).map(input => <SkillInput {...input} handleInput={this.handleInput} deleteEntry={this.deleteEntry} />)}
+              <Button variant='outline-secondary' className='btn-sm' onClick={() => this.addNewEntry('skills')}>+ Add another skill</Button>
+            </Row>  
           </Col>
           <Col>
             <Row as={Card} style={{height: '877px', width: '620px', margin: '0 auto'}}>
               <Col><PersonalInformationSection {...inputs.personal} photo={photo} /></Col>
               <Col><Education {...inputs.education} /></Col>
               <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
+              <Col><Skills {...inputs.skills} /></Col>
             </Row>
           </Col>
         </Row>
