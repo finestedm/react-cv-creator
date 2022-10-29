@@ -13,8 +13,8 @@ export default class SkillInput extends React.Component {
     render() {
         const { id, value, inSection, level, handleInput, deleteEntry } = this.props;
         return (
-            <div className='p-0 mb-2'>
-                <Row className='p-0 mb-2'>
+            <div className='p-0 mb-2 '>
+                <Row className='p-0 mb-2 '>
                     <InputGroup as={Col} size='sm' >
                         <InputGroup.Text>Skill</InputGroup.Text>
                         <Form.Control
@@ -26,10 +26,10 @@ export default class SkillInput extends React.Component {
                             }}
                         />
                     </InputGroup>
-                    <Col className='border border-primary rounded'>
+                    <Col className='border border-primary rounded d-flex align-items-center'>
                         <input
                             type="range"
-                            class="form-range"
+                            className="form-range"
                             min="1"
                             max="5"
                             id={id}

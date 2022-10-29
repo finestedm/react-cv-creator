@@ -11,12 +11,11 @@ export default class Skills extends React.Component {
         return (
             <li>
                 <Row>
-                    <Col>
-                        <span className='h5 mb-0'>{skill.value}</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style={{ width: skillLevelCalculatedToPercents}} aria-valuenow='0' aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <span ><small>Level:  {skill.level}</small></span>
+                    <Col className='d-flex flex-row p-1 align-items-center'>
+                        <span className='h5 mb-0 col-4'>{skill.value}</span>
+                        <span className="progress col-7 " >
+                            <div className="progress-bar" role="progressbar" style={{ width: skillLevelCalculatedToPercents}} aria-valuenow='0' aria-valuemin="0" aria-valuemax="100"></div>
+                        </span>
                     </Col>
                 </Row>
             </li>
