@@ -42,7 +42,7 @@ export default class SkillInput extends React.Component {
                         >
                             </input>
                     </Col>
-                    <Col xs={1} className='d-grid'>
+                    <Col xs={2} className='d-grid'>
                         <Button
                             onClick={() => deleteEntry(id, inSection)}
                             className='btn-sm'

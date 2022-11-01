@@ -18,7 +18,7 @@ export default class WorkInput extends React.Component {
                     </Col>
                 </Row>
                 <Row className='p-2'>
-                    <InputGroup as={Col} size='sm' >
+                    <InputGroup as={Col} size='sm'>
                         <InputGroup.Text>Company name</InputGroup.Text>
                         <Form.Control
                             id={id}
@@ -30,7 +30,7 @@ export default class WorkInput extends React.Component {
                             }}
                         />
                     </InputGroup>
-                    <InputGroup as={Col} size='sm' >
+                    <InputGroup as={Col} size='sm'>
                         <InputGroup.Text>Time period</InputGroup.Text>
                         <Form.Control
                             id={startDate}
