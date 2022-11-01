@@ -7,9 +7,6 @@ import Button from 'react-bootstrap/Button';
 
 
 export default class EducationInput extends React.Component {
-    constructor(props) {
-        super(props);
-    };
 
     render() {
         const { id, endDate, inSection, type, handleInput, deleteEntry} = this.props;

@@ -7,9 +7,6 @@ import Button from 'react-bootstrap/Button';
 
 
 export default class WorkInput extends React.Component {
-    constructor(props) {
-        super(props);
-    };
 
     render() {
         const { id, startDate, endDate, inSection, type, handleInput, deleteEntry} = this.props;

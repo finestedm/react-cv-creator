@@ -1,11 +1,9 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 
 export default function Footer() {
     return(
         
-        <footer className="bg-light text-center text-lg-start mt-4">
+        <footer className="bg-light text-center text-lg-start mt-4 border border-top">
             <div className="text-center p-3">
             <a href='https://github.com/finestedm/'>
                 <span className="navbar-brand mb-0 p-3"><span className='text-dark'>Created by Paweł Stępień</span>

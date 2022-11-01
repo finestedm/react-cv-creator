@@ -22,7 +22,8 @@ small {
     letter-spacing: -1px;
 }
 
-ol>li::marker {
+ol>li::marker,
+ul>li::marker {
     color: var(--primary-color) ;
 }
 
@@ -49,3 +50,9 @@ ol>li::marker {
 .progress {
     height: 50%;
 }
+
+@media screen and (max-width: 620px) {
+    .preview {
+      padding: 0 !important;
+    }
+  }

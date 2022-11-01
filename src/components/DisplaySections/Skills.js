@@ -2,9 +2,6 @@ import React from 'react';
 import { Col, Row } from "react-bootstrap";
 
 export default class Skills extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     createSingleSkillDiv(skill) {
         const skillLevelCalculatedToPercents = (skill.level * 20 + '%');
@@ -12,7 +9,7 @@ export default class Skills extends React.Component {
             <li>
                 <Row>
                     <Col className='d-flex flex-row p-1 align-items-center'>
-                        <span className='h5 mb-0 col-4'>{skill.value}</span>
+                        <span className='h6 mb-0 col-4 ms-1'>{skill.value}</span>
                         <span className="progress col-7 " >
                             <div className="progress-bar" role="progressbar" style={{ width: skillLevelCalculatedToPercents}} aria-valuenow='0' aria-valuemin="0" aria-valuemax="100"></div>
                         </span>

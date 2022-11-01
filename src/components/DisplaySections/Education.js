@@ -2,10 +2,6 @@ import React from 'react';
 import { Col, Row } from "react-bootstrap";
 
 export default class Education extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     createSingleSchoolDiv(school) {
         return (
             <li>

@@ -3,9 +3,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 export default class PersonalInformationSection extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const {photo} = this.props
@@ -19,7 +16,7 @@ export default class PersonalInformationSection extends React.Component {
                         <h6><small>{this.props[4].value !== '' && 'My website:  '} </small><u>{this.props[4].value}</u></h6>
                     </Col>
                     <Col xs={4} className='Heading p-2'>
-                        {photo !== undefined && <img className='person-photo float-end' src={photo}></img>}   {/*generate this element only if photo is uploaded (defined))*/}
+                        {photo !== undefined && <img className='person-photo float-end' src={photo} alt="your portrait"></img>}   {/*generate this element only if photo is uploaded (defined))*/}
                     </Col>
                 </Row>
                 <Row>

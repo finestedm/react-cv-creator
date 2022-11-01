@@ -14,8 +14,7 @@ import Education from './components/DisplaySections/Education';
 import SkillInput from './components/InputSections/SkillInput';
 import Skills from './components/DisplaySections/Skills';
 import Footer from './components/Footer';
-import Header from './components/Header';
-
+import Header from './components/Header'; 
 
 export default class App extends React.Component {
   constructor() {
@@ -107,12 +106,20 @@ export default class App extends React.Component {
     }
   }
 
+  calculateResumeScale() {
+    return window.innerWidth > 620 ? 1 : window.innerWidth / 620
+  }
+
+  calculateResumeDimensions() {
+    return window.innerWidth > 620 ? 620 : (window.innerWidth / 620)*620
+  }
+
   render() {
     const { inputs, photo } = this.state
     return (
-      <>
+      <div className='bg-light'>
       <Header />
-      <Container fluid="md" className='mt-5'>
+      <Container fluid = 'sm' className='mt-5'>
         <Row className='main d-flex justify-content-around gap-5'>
           <Col>
             <Row className='mb-4'>
@@ -136,18 +143,18 @@ export default class App extends React.Component {
               <Button variant='outline-secondary' className='btn-sm' onClick={() => this.addNewEntry('skills')}>+ Add another skill</Button>
             </Row>  
           </Col>
-          <Col>
-            <Row as={Card} style={{height: '877px', width: '620px', margin: '0 auto'}}>
-              <Col><PersonalInformationSection {...inputs.personal} photo={photo} /></Col>
-              <Col><Education {...inputs.education} /></Col>
-              <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
-              <Col><Skills {...inputs.skills} /></Col>
-            </Row>
-          </Col>
+            <Col style={{ height: `${(877/620) * this.calculateResumeDimensions()}px`, width: `${this.calculateResumeDimensions()}px` }} className='preview'>
+              <Row as={Card}  style={{ height: '877px', width: '620px', marginLeft: `-${(620-window.innerWidth)/2 }px`, marginTop: `-${(877-window.innerWidth*877/620)/2 }px` , scale: `${this.calculateResumeScale()}` }}>
+                <Col><PersonalInformationSection {...inputs.personal} photo={photo} /></Col>
+                <Col><Education {...inputs.education} /></Col>
+                <Col><WorkExperienceSection {...inputs.workExperience} /></Col>
+                <Col><Skills {...inputs.skills} /></Col>
+              </Row>
+            </Col>
           </Row>
         </Container>
         <Footer />
-      </>
+      </div>
     )
   }
 }

@@ -6,17 +6,14 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 export default class SkillInput extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
-        const { id, value, inSection, level, handleInput, deleteEntry } = this.props;
+        const { id, inSection, handleInput, deleteEntry } = this.props;
         return (
             <div className='p-0 mb-2 '>
                 <Row className='p-0 mb-2 '>
                     <InputGroup as={Col} size='sm' >
-                        <InputGroup.Text>Skill</InputGroup.Text>
+                        <InputGroup.Text>{id}</InputGroup.Text>
                         <Form.Control
                             id={id}
                             type='text'

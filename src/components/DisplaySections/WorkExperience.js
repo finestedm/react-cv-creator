@@ -2,9 +2,6 @@ import React from 'react';
 import { Col, Row } from "react-bootstrap";
 
 export default class WorkExperienceSection extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     createSingleJobDiv(job) {
         return (
