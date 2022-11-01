@@ -4,6 +4,10 @@
     --primary-color: #3b67a5;   
 }
 
+body {
+    background-color: white;
+}
+
 .Heading {
     background-color: lightgray;
 }

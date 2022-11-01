@@ -107,7 +107,7 @@ export default class App extends React.Component {
   }
 
   calculateResumeScale() {
-    return window.innerWidth > 620 ? 1 : window.innerWidth / 620
+    return window.innerWidth > 620 ? 1 : ((window.innerWidth / 620)*0.95)
   }
 
   calculateResumeDimensions() {
@@ -119,9 +119,9 @@ export default class App extends React.Component {
     return (
       <div className='bg-light'>
       <Header />
-      <Container fluid = 'sm' className='mt-5'>
+      <Container className='mt-5'>
         <Row className='main d-flex justify-content-around gap-5'>
-          <Col>
+          <Col className='mx-2'>
             <Row className='mb-4'>
               <h4 className='p-0'>Personal information</h4>
               {Object.values(inputs.personal).map(input => <SingleInput {...input} handleInput={this.handleInput} />)}
