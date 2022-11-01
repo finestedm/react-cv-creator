@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 export default class EducationInput extends React.Component {
 
     render() {
-        const { id, endDate, inSection, type, handleInput, deleteEntry} = this.props;
+        const { id, endDate, inSection, type, handleInput, deleteEntry, value, profile, achievements} = this.props;
         return (
             <div className='p-0 m-0 border rounded border-secondary mb-2'>
                 <Row className='p-1 text-center'>
@@ -24,6 +24,7 @@ export default class EducationInput extends React.Component {
                             id={id}
                             type={type}
                             aria-label={id}
+                            value = {value}
                             onChange={(e) => {
                                 handleInput(e.target.value, id, inSection);
                             }}
@@ -35,6 +36,7 @@ export default class EducationInput extends React.Component {
                             id={endDate}
                             type='date'
                             aria-label={endDate}
+                            value={endDate}
                             onChange={(e) => {
                                 handleInput(e.target.value, id, inSection, 'endDate');
                             }}
@@ -48,6 +50,7 @@ export default class EducationInput extends React.Component {
                             id={id}
                             type={type}
                             aria-label={id}
+                            value={profile}
                             onChange={(e) => handleInput(e.target.value, id, inSection, 'profile')}
                         />
                     </InputGroup>
@@ -59,6 +62,7 @@ export default class EducationInput extends React.Component {
                             id={id}
                             type={type}
                             aria-label={id}
+                            value={achievements}
                             onChange={(e) => handleInput(e.target.value, id, inSection, 'achievements')}
                         />
                     </InputGroup>

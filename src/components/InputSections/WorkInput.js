@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 export default class WorkInput extends React.Component {
 
     render() {
-        const { id, startDate, endDate, inSection, type, handleInput, deleteEntry} = this.props;
+        const { id, startDate, endDate, inSection, type, handleInput, deleteEntry, value, description} = this.props;
         return (
             <div className='p-0 m-0 border border-secondary rounded mb-2'>
                 <Row className='p-1 text-center'>
@@ -24,6 +24,7 @@ export default class WorkInput extends React.Component {
                             id={id}
                             type={type}
                             aria-label={id}
+                            value={value}
                             onChange={(e) => {
                                 handleInput(e.target.value, id, inSection);
                             }}
@@ -35,6 +36,7 @@ export default class WorkInput extends React.Component {
                             id={startDate}
                             type='date'
                             aria-label={startDate}
+                            value={startDate}
                             onChange={(e) => {
                                 handleInput(e.target.value, id, inSection, 'startDate');
                             }}
@@ -43,6 +45,7 @@ export default class WorkInput extends React.Component {
                             id={endDate}
                             type='date'
                             aria-label={endDate}
+                            value={endDate}
                             onChange={(e) => {
                                 handleInput(e.target.value, id, inSection, 'endDate');
                             }}
@@ -57,6 +60,7 @@ export default class WorkInput extends React.Component {
                             id={id}
                             type={type}
                             aria-label={id}
+                            value={description}
                             onChange={(e) => handleInput(e.target.value, id, inSection, 'description')}
                         />
                     </InputGroup>

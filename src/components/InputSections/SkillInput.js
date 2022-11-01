@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 export default class SkillInput extends React.Component {
 
     render() {
-        const { id, inSection, handleInput, deleteEntry } = this.props;
+        const { id, inSection, handleInput, deleteEntry, value, level } = this.props;
         return (
             <div className='p-0 mb-2 '>
                 <Row className='p-0 mb-2 '>
@@ -18,6 +18,7 @@ export default class SkillInput extends React.Component {
                             id={id}
                             type='text'
                             aria-label={id}
+                            value={value}
                             onChange={(e) => {
                                 handleInput(e.target.value, id, inSection);
                             }}
@@ -30,6 +31,7 @@ export default class SkillInput extends React.Component {
                             min="1"
                             max="5"
                             id={id}
+                            value={level}
                             onChange={(e) => {
                                 handleInput(e.target.value, id, inSection, 'level')
                             }}
