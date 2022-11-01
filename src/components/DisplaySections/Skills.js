@@ -23,7 +23,7 @@ export default class Skills extends React.Component {
         const skills = { ...this.props }
         return (
             <>
-                <h6 className='colored'><i>{Object.keys(skills).every(skill => skill[0].value !== '' ) && 'Skills'}<hr className='mt-0'></hr></i></h6>    {/*add heading only if first employer name has been added' */}
+                <h6 className='colored'><i>{Object.keys(skills).every(skill => skills[0].value !== '' && skills[0] !== undefined) && 'Skills'}<hr className='mt-0'></hr></i></h6>    {/*add heading only if first employer name has been added' */}
                 <ul>
                     {Object.keys(skills).map(skill => skills[skill].value !== '' && this.createSingleSkillDiv(skills[skill]))}
                 </ul>

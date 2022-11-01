@@ -9,7 +9,6 @@ export default class Education extends React.Component {
                     <Col xs={4}>
                         <h5 className='mb-0'>{school.value}</h5>
                         <h6 className='mb-0'>{school.profile}</h6>
-                        {console.log(school.endDate)}
                         {(school.endDate !== '' && school.endDate !== undefined) && <h6><small>Finished: {school.endDate}</small></h6>}
                     </Col>
                     <Col>
