@@ -5,8 +5,12 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-export default class SkillInput extends React.Component {
 
+export default class SkillInput extends React.Component {
+    function() {
+        ('[data-toggle="tooltip"]').tooltip()
+    };
+  
     render() {
         const { id, inSection, handleInput, deleteEntry, value, level } = this.props;
         return (
@@ -24,7 +28,7 @@ export default class SkillInput extends React.Component {
                             }}
                         />
                     </InputGroup>
-                    <Col className='border border-primary rounded d-flex align-items-center'>
+                    <Col xs={4} className='border border-primary rounded d-flex align-items-center'>
                         <input
                             type="range"
                             className="form-range"
@@ -38,11 +42,14 @@ export default class SkillInput extends React.Component {
                         >
                             </input>
                     </Col>
-                    <Col xs={2} className='d-grid'>
+                    <Col xs={1} className='d-grid'>
                         <Button
                             onClick={() => deleteEntry(id, inSection)}
                             className='btn-sm'
-                            variant='outline-danger'>
+                            variant='outline-danger'
+                            data-toggle="tooltip"
+                            title="Delete this task"
+                            >
                             ✖
                         </Button>
                     </Col>
